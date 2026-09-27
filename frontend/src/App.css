@@ -1,0 +1,805 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system,
+    BlinkMacSystemFont, sans-serif;
+  background: #f7f7fb;
+  color: #1a1a2e;
+}
+
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+  padding: 1.25rem 2rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5ef;
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+
+/* ================================
+   THEME BUTTON
+================================ */
+
+.theme-button {
+  margin-left: auto;
+
+  padding: 0.5rem 0.8rem;
+
+  border: 1px solid #d1d1e0;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #374151;
+
+  cursor: pointer;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.theme-button:hover {
+  background: #f3f4f6;
+}
+
+
+/* ================================
+   CONTAINER
+================================ */
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 0.6rem;
+}
+
+.hero p {
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+
+/* ================================
+   WORKSPACE
+================================ */
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+
+/* ================================
+   PANELS
+================================ */
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e5e5ef;
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.panel h2 {
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+}
+
+
+/* ================================
+   LABELS
+================================ */
+
+label {
+  display: block;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  color: #374151;
+
+  margin-bottom: 0.35rem;
+}
+
+
+/* ================================
+   TEXTAREA
+================================ */
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+
+  padding: 0.8rem;
+
+  border: 1px solid #d1d1e0;
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  resize: vertical;
+
+  background: #ffffff;
+  color: #1a1a2e;
+
+  outline: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+textarea:focus {
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* ================================
+   SETTINGS
+================================ */
+
+.settings {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0.9rem;
+
+  margin: 1.25rem 0;
+}
+
+.settings label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.settings select {
+  width: 100%;
+
+  padding: 0.6rem;
+
+  border: 1px solid #d1d1e0;
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+
+  background: #ffffff;
+  color: #1a1a2e;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.settings select:focus {
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* ================================
+   GENERATE BUTTON
+================================ */
+
+.generate-button {
+  width: 100%;
+
+  padding: 0.85rem;
+
+  background: #4f46e5;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.generate-button:hover:not(:disabled) {
+  background: #4338ca;
+}
+
+.generate-button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.generate-button:disabled {
+  background: #c7c7e0;
+  cursor: not-allowed;
+}
+
+
+/* ================================
+   OUTPUT PANEL
+================================ */
+
+.output-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+}
+
+
+/* ================================
+   OUTPUT HEADER
+================================ */
+
+.output-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 0.75rem;
+}
+
+.output-header h2 {
+  margin: 0;
+}
+
+.output-header span {
+  font-size: 0.75rem;
+
+  background: #eef2ff;
+  color: #4f46e5;
+
+  padding: 0.25rem 0.65rem;
+
+  border-radius: 999px;
+}
+
+
+/* ================================
+   OUTPUT ACTIONS
+================================ */
+
+.output-actions {
+  display: flex;
+
+  gap: 0.5rem;
+
+  margin-bottom: 1rem;
+}
+
+.output-actions button {
+  padding: 0.45rem 0.9rem;
+
+  border: 1px solid #d1d1e0;
+  border-radius: 6px;
+
+  background: #f7f7fb;
+
+  cursor: pointer;
+
+  font-size: 0.85rem;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.output-actions button:hover {
+  background: #ececf7;
+  border-color: #a5b4fc;
+}
+
+
+/* ================================
+   RESULT
+================================ */
+
+.result {
+  white-space: pre-wrap;
+
+  line-height: 1.65;
+  font-size: 0.95rem;
+
+  max-height: 420px;
+
+  overflow-y: auto;
+
+  padding-right: 0.4rem;
+}
+
+
+/* ================================
+   ERROR
+================================ */
+
+.error-message {
+  margin-top: 0.9rem;
+
+  padding: 0.75rem;
+
+  background: #fef2f2;
+  color: #b91c1c;
+
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.5;
+}
+
+
+/* ================================
+   EMPTY OUTPUT
+================================ */
+
+.empty-output {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #9ca3af;
+
+  padding: 2rem 0;
+}
+
+.empty-output h3 {
+  margin: 0.4rem 0;
+  color: #6b7280;
+}
+
+.empty-output p {
+  margin: 0;
+
+  max-width: 300px;
+
+  line-height: 1.5;
+}
+
+
+/* ================================
+   SPINNER
+================================ */
+
+.empty-icon {
+  font-size: 1.8rem;
+
+  margin-bottom: 0.5rem;
+
+  color: #a5b4fc;
+}
+
+.empty-icon.spinning {
+  display: inline-block;
+
+  animation:
+    spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ================================
+   HISTORY
+================================ */
+
+.history-section {
+  background: #ffffff;
+
+  border: 1px solid #e5e5ef;
+  border-radius: 12px;
+
+  padding: 1.5rem;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.history-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 1rem;
+}
+
+.history-header h2 {
+  margin: 0;
+}
+
+.history-header p {
+  margin: 0.3rem 0 0;
+
+  color: #6b7280;
+
+  font-size: 0.85rem;
+}
+
+
+/* ================================
+   HISTORY LIST
+================================ */
+
+.history-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(220px, 1fr));
+
+  gap: 0.75rem;
+}
+
+
+/* ================================
+   HISTORY ITEM
+================================ */
+
+.history-item {
+  border: 1px solid #e5e5ef;
+
+  border-radius: 8px;
+
+  padding: 0.75rem;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.history-item:hover {
+  border-color: #a5b4fc;
+
+  background: #f5f5ff;
+
+  transform: translateY(-1px);
+}
+
+.history-item-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 0.8rem;
+
+  margin-bottom: 0.4rem;
+}
+
+.history-item p {
+  font-size: 0.85rem;
+
+  color: #4b5563;
+
+  margin: 0 0 0.4rem;
+
+  line-height: 1.4;
+}
+
+.history-item span {
+  font-size: 0.75rem;
+
+  color: #9ca3af;
+}
+
+
+/* ================================
+   CLEAR HISTORY
+================================ */
+
+.clear-history-button {
+  padding: 0.45rem 0.8rem;
+
+  border: 1px solid #d1d1e0;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #4b5563;
+
+  cursor: pointer;
+
+  font-size: 0.8rem;
+}
+
+.clear-history-button:hover {
+  background: #f3f4f6;
+}
+
+
+/* ================================
+   DARK MODE
+================================ */
+
+.app.dark {
+  background: #14141f;
+  color: #e5e5f0;
+}
+
+.app.dark .header {
+  background: #1c1c2b;
+  border-color: #2a2a3d;
+}
+
+.app.dark .header p {
+  color: #a5a5b5;
+}
+
+.app.dark .panel,
+.app.dark .history-section {
+  background: #1c1c2b;
+  border-color: #2a2a3d;
+}
+
+.app.dark .hero p {
+  color: #a5a5b5;
+}
+
+.app.dark label {
+  color: #c7c7d5;
+}
+
+.app.dark textarea,
+.app.dark .settings select {
+  background: #14141f;
+  color: #e5e5f0;
+  border-color: #3a3a50;
+}
+
+.app.dark textarea::placeholder {
+  color: #77778a;
+}
+
+.app.dark .output-header span {
+  background: #2a2a4a;
+  color: #a5b4fc;
+}
+
+.app.dark .result {
+  color: #e5e5f0;
+}
+
+.app.dark .empty-output {
+  color: #858599;
+}
+
+.app.dark .empty-output h3 {
+  color: #c7c7d5;
+}
+
+.app.dark .history-item {
+  border-color: #3a3a50;
+  background: #181824;
+}
+
+.app.dark .history-item:hover {
+  background: #222238;
+  border-color: #6366f1;
+}
+
+.app.dark .history-item p {
+  color: #b5b5c5;
+}
+
+.app.dark .history-item span {
+  color: #858599;
+}
+
+.app.dark .output-actions button,
+.app.dark .clear-history-button {
+  background: #242436;
+  color: #e5e5f0;
+  border-color: #3a3a50;
+}
+
+.app.dark .output-actions button:hover,
+.app.dark .clear-history-button:hover {
+  background: #303047;
+}
+
+.app.dark .error-message {
+  background: #351c1c;
+  color: #fca5a5;
+  border-color: #632d2d;
+}
+
+
+/* ================================
+   DARK MODE BUTTON
+================================ */
+
+.app.dark .theme-button {
+  background: #242436;
+
+  color: #e5e5f0;
+
+  border-color: #3a3a50;
+}
+
+.app.dark .theme-button:hover {
+  background: #303047;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 1rem 1.25rem;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+  }
+
+  .header-left {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 0.2rem;
+  }
+
+  .theme-button {
+    margin-left: 0;
+  }
+
+  .container {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .settings {
+    grid-template-columns: 1fr;
+  }
+
+  .output-panel {
+    min-height: 400px;
+  }
+
+  .history-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+
+  .history-section {
+    padding: 1rem;
+  }
+
+  .output-actions {
+    flex-wrap: wrap;
+  }
+
+  .output-actions button {
+    flex: 1;
+  }
+}
+
