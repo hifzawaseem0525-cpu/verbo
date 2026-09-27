@@ -17,7 +17,7 @@ from prompt_builder import build_prompt, build_transform_prompt
 load_dotenv()
 
 API_KEY = os.getenv("GOOGLE_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
 
 if not API_KEY:
@@ -54,6 +54,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://verbo-nu.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -409,4 +410,3 @@ def transform_text(request: TransformRequest):
             status_code=502,
             detail=friendly_error(exc),
         )
-
