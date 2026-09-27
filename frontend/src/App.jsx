@@ -1,7 +1,12 @@
+
 import { useState } from "react";
 import "./App.css";
 
-const API_URL = "https://verbo-backend-velk.onrender.com";
+// Production backend on Render.
+// VITE_API_URL can override this when deployed.
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://verbo-backend-velk.onrender.com";
 
 function App() {
   const [topic, setTopic] = useState("");
@@ -18,6 +23,10 @@ function App() {
   const [history, setHistory] = useState([]);
   const [copied, setCopied] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+
+  // ============================================================
+  // GENERATE CONTENT
+  // ============================================================
 
   async function generateContent() {
     if (!topic.trim()) {
@@ -74,9 +83,9 @@ function App() {
     } catch (err) {
       console.error("Generation error:", err);
 
-      if (err.message === "Failed to fetch") {
+      if (err.name === "TypeError" || err.message === "Failed to fetch") {
         setError(
-          "Could not connect to the server. Please check that the backend is running."
+          "Could not connect to the server. Please try again."
         );
       } else {
         setError(
@@ -87,6 +96,10 @@ function App() {
       setLoading(false);
     }
   }
+
+  // ============================================================
+  // TRANSFORM TEXT
+  // ============================================================
 
   async function transformText() {
     if (!topic.trim()) {
@@ -139,9 +152,9 @@ function App() {
     } catch (err) {
       console.error("Transformation error:", err);
 
-      if (err.message === "Failed to fetch") {
+      if (err.name === "TypeError" || err.message === "Failed to fetch") {
         setError(
-          "Could not connect to the server. Please check that the backend is running."
+          "Could not connect to the server. Please try again."
         );
       } else {
         setError(
@@ -152,6 +165,10 @@ function App() {
       setLoading(false);
     }
   }
+
+  // ============================================================
+  // COPY
+  // ============================================================
 
   async function handleCopy() {
     if (!result) return;
@@ -168,6 +185,10 @@ function App() {
       setError("Could not copy the content.");
     }
   }
+
+  // ============================================================
+  // DOWNLOAD
+  // ============================================================
 
   function handleDownload() {
     if (!result) return;
@@ -189,6 +210,10 @@ function App() {
     URL.revokeObjectURL(url);
   }
 
+  // ============================================================
+  // HISTORY
+  // ============================================================
+
   function loadHistory(entry) {
     setResult(entry.result);
     setError("");
@@ -198,6 +223,10 @@ function App() {
   function clearHistory() {
     setHistory([]);
   }
+
+  // ============================================================
+  // UI
+  // ============================================================
 
   return (
     <div className={`app ${darkMode ? "dark" : ""}`}>
@@ -537,3 +566,4 @@ function App() {
 }
 
 export default App;
+
